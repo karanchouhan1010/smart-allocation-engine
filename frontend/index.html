@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Allocation Engine | PM Internship Scheme</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand-mark">SA</div>
+    <div class="brand-copy">
+      <strong>SmartAlloc</strong>
+      <span>PM Internship Scheme</span>
+    </div>
+    <nav>
+      <a class="active" href="#dashboard">Dashboard</a>
+      <a href="#matches">AI Matching</a>
+      <a href="#internships">Internships</a>
+    </nav>
+    <div class="sidebar-note">
+      <span class="status-dot"></span>
+      Prototype environment
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">ALLOCATION WORKSPACE</p>
+        <h1>Smart Allocation Dashboard</h1>
+        <p class="muted">Match candidates with suitable internship opportunities.</p>
+      </div>
+      <div class="profile-chip">
+  <span class="avatar">A</span>
+  <span id="admin-status">Guest Mode</span>
+  <button type="button" id="admin-login-btn">Admin Login</button>
+  <button type="button" id="admin-logout-btn" hidden>Logout</button>
+</div>
+    </header>
+
+    <section class="hero" id="dashboard">
+      <div>
+        <p class="hero-kicker">AI-POWERED • EXPLAINABLE MATCHING</p>
+        <h2>Better matches.<br>More transparent allocations.</h2>
+        <p>Review eligibility, skill compatibility, and recommendation reasons in one place.</p>
+        <a class="hero-link" href="#matches">Explore candidate matches <span>↗</span></a>
+      </div>
+      <div class="hero-graphic" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="core">AI</div><div class="node node-one">Skills</div>
+        <div class="node node-two">Role</div><div class="node node-three">Fit</div>
+      </div>
+    </section>
+
+    <section class="stats-grid" aria-label="Project statistics">
+      <article class="stat-card"><div class="stat-icon purple">♙</div><p>Total Candidates</p><strong id="candidate-count">—</strong><span>Sample profiles</span></article>
+      <article class="stat-card"><div class="stat-icon blue">▤</div><p>Internship Roles</p><strong id="internship-count">—</strong><span>Available listings</span></article>
+      <article class="stat-card"><div class="stat-icon green">✓</div><p>Available Seats</p><strong id="seat-count">—</strong><span>Across all listings</span></article>
+      <article class="stat-card"><div class="stat-icon orange">✳</div><p>Eligible Pairs</p><strong id="eligible-count">—</strong><span>Candidate-role pairs</span></article>
+    </section>
+
+    <section class="panel" id="matches">
+      <div class="section-heading">
+        <div><p class="eyebrow">RECOMMENDATION ENGINE</p><h2>Candidate matching</h2><p class="muted">Choose a sample candidate to see ranked internships.</p></div>
+        <div class="control-group"><label for="candidate-select">Candidate</label><select id="candidate-select"><option>Loading candidates…</option></select></div>
+      </div>
+      <div id="candidate-profile" class="candidate-profile"></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Internship</th><th>Skill match</th><th>Compatibility</th><th>Eligibility</th><th></th></tr></thead>
+          <tbody id="match-rows"><tr><td colspan="5">Loading matches…</td></tr></tbody>
+        </table>
+      </div>
+      <p class="disclaimer">Scores are prototype recommendations, not official selection decisions. Review eligibility and criteria before making allocations.</p>
+    </section>
+
+    
+<section class="panel" id="manage-data">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">ADMIN WORKSPACE</p>
+      <h2>Manage Candidates & Internships</h2>
+      <p class="muted">Add new records to your allocation database.</p>
+    </div>
+  </div>
+
+  <div class="form-grid">
+    <form id="candidate-form" class="data-form">
+      <h3 id="candidate-form-title">Add Candidate</h3>\n      <input type="hidden" name="candidate_id" value="">
+      
+
+      <label for="c-name">Full Name</label>
+      <input id="c-name" name="name" required placeholder="e.g. Rahul Sharma">
+
+      <label for="c-qualification">Qualification</label>
+      <input id="c-qualification" name="qualification" required placeholder="B.Tech Computer Science">
+
+      <label for="c-skills">Skills (comma separated)</label>
+      <input id="c-skills" name="skills" required placeholder="Python, SQL, HTML">
+
+      <label for="c-sector">Preferred Sector</label>
+      <input id="c-sector" name="preferred_sector" required placeholder="Technology">
+
+      <label for="c-location">Preferred Location</label>
+      <input id="c-location" name="preferred_location" required placeholder="Indore">
+
+      <label for="c-cgpa">CGPA (0–10)</label>
+      <input id="c-cgpa" name="cgpa" type="number" min="0" max="10" step="0.01" required>
+
+      <label for="c-experience">Experience (months)</label>
+      <input id="c-experience" name="experience_months" type="number" min="0" value="0" required>
+
+      <button type="submit" class="primary-btn">Save Candidate</button>
+    </form>
+
+    <form id="internship-form" class="data-form">
+      <h3>Add Internship</h3>
+
+      <label for="i-role">Internship Role</label>
+      <input id="i-role" name="role" required placeholder="Python Developer Intern">
+
+      <label for="i-company">Company</label>
+      <input id="i-company" name="company" required placeholder="ABC Technologies">
+
+      <label for="i-qualification">Required Qualification</label>
+      <input id="i-qualification" name="required_qualification" required placeholder="B.Tech Computer Science">
+
+      <label for="i-skills">Required Skills (comma separated)</label>
+      <input id="i-skills" name="required_skills" required placeholder="Python, SQL, Pandas">
+
+      <label for="i-sector">Sector</label>
+      <input id="i-sector" name="sector" required placeholder="Technology">
+
+      <label for="i-location">Location</label>
+      <input id="i-location" name="location" required placeholder="Indore">
+
+      <label for="i-cgpa">Minimum CGPA (0–10)</label>
+      <input id="i-cgpa" name="min_cgpa" type="number" min="0" max="10" step="0.01" value="0" required>
+
+      <label for="i-seats">Available Seats</label>
+      <input id="i-seats" name="seats" type="number" min="0" value="1" required>
+
+      <button type="submit" class="primary-btn">Save Internship</button>
+    </form>
+  </div>
+
+  <div class="candidate-management">
+    <h3>Manage Candidate Records</h3>
+    <p class="muted">Edit an existing candidate's profile and save the changes.</p>
+    <div class="table-wrap">
+  <h3>Manage Candidate Records</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Qualification</th>
+        <th>Skills</th>
+        <th>CGPA</th>
+        <th>Location</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="candidate-record-rows"></tbody>
+  </table>
+</div>
+  </div>
+</section>
+
+<section class="panel" id="allocation-panel">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">AUTOMATED DECISION SUPPORT</p>
+      <h2>Automatic Internship Allocation</h2>
+      <p class="muted">Assign eligible candidates based on matching scores and available seats.</p>
+    </div>
+  </div>
+
+  <button id="run-allocation" class="primary-btn">
+    Run Automatic Allocation
+  </button>
+
+  <div id="allocation-results"></div>
+  
+<h3>Saved Allocation History</h3>
+<button id="load-history" class="primary-btn">Refresh History</button>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Candidate</th>
+        <th>Internship</th>
+        <th>Company</th>
+        <th>Score</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody id="history-rows">
+      <tr><td colspan="5">Click Refresh History to load saved records.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+    <section class="panel" id="internships">
+      <div class="section-heading"><div><p class="eyebrow">OPPORTUNITY DIRECTORY</p><h2>Internship listings</h2></div><span class="pill">Sample data</span></div>
+      <div id="internship-list" class="internship-grid"></div>
+    </section>
+    <footer>AI-Based Smart Allocation Engine • Academic project prototype</footer>
+  </main>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
