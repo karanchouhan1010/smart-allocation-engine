@@ -1,0 +1,7 @@
+FastAPI, 
+Uvicorn, 
+SQLAlchemy, 
+psycopg, 
+scikit-learn, 
+PyJWT
+python-dotenv
