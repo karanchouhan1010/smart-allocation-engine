@@ -1,7 +1,11 @@
-FastAPI, 
-Uvicorn, 
-SQLAlchemy, 
-psycopg, 
-scikit-learn, 
+fastapi
+uvicorn
+sqlalchemy
+psycopg[binary]
+pydantic
 PyJWT
+scikit-learn
+pandas
+numpy
 python-dotenv
+python-multipart
